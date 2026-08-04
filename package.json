@@ -1,0 +1,20 @@
+{
+  "name": "blanket-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Empaquetage Android (Capacitor) du portage web de Blanket",
+  "scripts": {
+    "build": "python build-www.py",
+    "sync": "python build-www.py && npx cap sync android",
+    "android:debug": "npm run sync && cd android && gradlew assembleDebug",
+    "android:release": "npm run sync && cd android && gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/core": "^7.4.2"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.4.2"
+  }
+}

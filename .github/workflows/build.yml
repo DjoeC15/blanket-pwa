@@ -1,0 +1,158 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main, refonte-audio]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  # ── APK debug ─────────────────────────────────────────────────────────────
+  debug:
+    name: APK debug
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # capacitor-android 7.x compile en source release 21 :
+      # android/app/capacitor.build.gradle fixe JavaVersion.VERSION_21.
+      # Avec Java 17 le build échoue sur « invalid source release: 21 ».
+      - name: Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # Indispensable même si le projet Android est versionné :
+      # android/capacitor.settings.gradle déclare le module :capacitor-android
+      # avec projectDir = ../node_modules/@capacitor/android/capacitor
+      - name: Dépendances Capacitor
+        run: npm ci
+
+      - name: Construire www/
+        run: python3 build-www.py
+
+      # Régénère android/capacitor-cordova-android-plugins/, requis par
+      # android/settings.gradle mais absent du dépôt (gitignoré par le
+      # template Capacitor), et recopie www/ dans les assets.
+      #
+      # NE PAS remettre `npx cap add android` ici : le projet Android est
+      # versionné et contient du code natif écrit à la main
+      # (PlaybackService, PlaybackPlugin, manifeste, icônes) que `cap add`
+      # écraserait — le foreground service ne serait alors jamais construit.
+      - name: Synchroniser le projet Android
+        run: npx cap sync android
+
+      # Le dépôt stocke gradlew en mode 100644 (ajouté depuis Windows).
+      - name: Rendre gradlew exécutable
+        run: chmod +x android/gradlew
+
+      - name: Build
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Publier l'APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: blanket-debug-${{ github.sha }}
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 14
+
+  # ── APK release signé, sur tag v* ─────────────────────────────────────────
+  release:
+    name: APK release
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: debug
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Échoue tôt et explicitement plutôt qu'au milieu de Gradle avec une
+      # erreur de keystore illisible.
+      - name: Vérifier les secrets de signature
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          missing=""
+          for name in KEYSTORE_BASE64 KEYSTORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do
+            if [ -z "${!name}" ]; then
+              missing="$missing $name"
+            fi
+          done
+          if [ -n "$missing" ]; then
+            echo "Secrets manquants :$missing"
+            echo "À définir dans Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Dépendances Capacitor
+        run: npm ci
+
+      - name: Construire www/
+        run: python3 build-www.py
+
+      - name: Synchroniser le projet Android
+        run: npx cap sync android
+
+      - name: Rendre gradlew exécutable
+        run: chmod +x android/gradlew
+
+      - name: Déchiffrer le keystore
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/keystore.jks"
+
+      - name: Build signé
+        working-directory: android
+        run: |
+          ./gradlew assembleRelease --no-daemon --stacktrace \
+            -Pandroid.injected.signing.store.file="$RUNNER_TEMP/keystore.jks" \
+            -Pandroid.injected.signing.store.password="${{ secrets.KEYSTORE_PASSWORD }}" \
+            -Pandroid.injected.signing.key.alias="${{ secrets.KEY_ALIAS }}" \
+            -Pandroid.injected.signing.key.password="${{ secrets.KEY_PASSWORD }}"
+
+      - name: Créer la Release GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Blanket ${{ github.ref_name }}
+          body: |
+            ## Blanket ${{ github.ref_name }}
+
+            ### Installation
+            Télécharge l'APK ci-dessous, autorise l'installation depuis des
+            sources inconnues sur ton Android, puis installe-le.
+
+            ### Changelog
+            _À compléter._
+          files: android/app/build/outputs/apk/release/app-release.apk
+          draft: false
+          prerelease: false
