@@ -1,0 +1,24 @@
+# Le dépôt amont est un projet Linux : tout le texte y est en LF, et c'est
+# aussi ce que contiennent les blobs de ce dépôt. On le fige ici pour que
+# core.autocrlf — activé par défaut par GitHub Desktop sous Windows — ne
+# réintroduise pas de CRLF dans les commits à venir.
+* text=auto eol=lf
+
+# Scripts Windows : doivent garder des fins de ligne CRLF pour cmd.exe.
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# Le wrapper Gradle est un script shell exécuté tel quel sur Linux et macOS.
+gradlew  text eol=lf
+
+# Binaires : aucune conversion de fin de ligne, aucun diff textuel.
+*.png  binary
+*.ogg  binary
+*.jar  binary
+*.apk  binary
+*.mo   binary
+
+# Fichiers de traduction : du texte, mais des diffs peu lisibles. On garde la
+# conversion LF sans les traiter comme du code.
+*.po   text eol=lf
+*.pot  text eol=lf
