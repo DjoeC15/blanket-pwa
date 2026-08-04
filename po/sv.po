@@ -1,0 +1,418 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+# Luna Jernberg <bittin@cafe8bitar.se>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-07 19:36-0500\n"
+"PO-Revision-Date: 2025-10-11 17:07+0000\n"
+"Last-Translator: Runskrift <anders@rimfrost.nu>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/blanket/blanket/"
+"sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14-dev\n"
+
+#: data/com.rafaelmardojai.Blanket.desktop.in:3
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:6 blanket/main.py:38
+#: blanket/mpris.py:156
+msgid "Blanket"
+msgstr "Blanket"
+
+#: data/com.rafaelmardojai.Blanket.desktop.in:4 data/resources/about.blp:6
+#: blanket/mpris.py:154
+msgid "Listen to different sounds"
+msgstr "Lyssna på olika ljud"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+msgstr "Koncentrera; Fokusera; Brus; Produktivitet. Sov;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+msgid "Listen to ambient sounds"
+msgstr "Lyssna på omgivande ljud"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+msgid ""
+"Improve focus and increase your productivity by listening to different "
+"ambient sounds"
+msgstr ""
+"Förbättra fokus och öka din produktivitet genom att lyssna på olika "
+"omgivande ljud"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+msgid "Also can help you to fall asleep in a noisy environment."
+msgstr "Kan också hjälpa dig att somna i en bullrig miljö."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+msgid "Features:"
+msgstr "Funktioner:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+msgid "Save presets"
+msgstr "Spara förinställningar"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+msgid "Add custom sounds"
+msgstr "Lägg till anpassade ljud"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+msgid "Auto start in background"
+msgstr "Autostarta i bakgrunden"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+msgid "MPRIS integration"
+msgstr "MPRIS-integration"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+msgid "Included Sounds in the App:"
+msgstr "Inkluderade ljud i detta program:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:20 blanket/define.py:18
+#: blanket/define.py:58 blanket/define.py:69
+msgid "Birds"
+msgstr "Fåglar"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:21 blanket/define.py:26
+#: blanket/define.py:54 blanket/define.py:73
+msgid "Boat"
+msgstr "Båt"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:22 blanket/define.py:27
+#: blanket/define.py:55 blanket/define.py:74
+msgid "City"
+msgstr "Stad"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:23 blanket/define.py:33
+#: blanket/define.py:61
+msgid "Coffee Shop"
+msgstr "Kafé"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:24 blanket/define.py:34
+#: blanket/define.py:53
+msgid "Fireplace"
+msgstr "Eldstad"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:25 blanket/define.py:40
+#: blanket/define.py:62
+msgid "Pink Noise"
+msgstr "Rosa brus"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:26 blanket/define.py:13
+#: blanket/define.py:51 blanket/define.py:70
+msgid "Rain"
+msgstr "Regn"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:27 blanket/define.py:19
+#: blanket/define.py:59
+msgid "Summer Night"
+msgstr "Sommarnatt"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:28 blanket/define.py:14
+#: blanket/define.py:52 blanket/define.py:71
+msgid "Storm"
+msgstr "Storm"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:29 blanket/define.py:17
+#: blanket/define.py:56
+msgid "Stream"
+msgstr "Ström"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:30 blanket/define.py:25
+#: blanket/define.py:64
+msgid "Train"
+msgstr "Tåg"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:31 blanket/define.py:16
+#: blanket/define.py:60 blanket/define.py:72
+msgid "Waves"
+msgstr "Vågor"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:32 blanket/define.py:41
+#: blanket/define.py:57
+msgid "White Noise"
+msgstr "Vitt brus"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:33 blanket/define.py:15
+#: blanket/define.py:63 blanket/define.py:75
+msgid "Wind"
+msgstr "Vind"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+msgid "The default screen in light theme"
+msgstr "Standardskärmen i ljust tema"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+msgid "The default screen in dark theme"
+msgstr "Standardskärmen i mörkt tema"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+msgctxt "visible-name"
+msgid "'Default'"
+msgstr "'Standard'"
+
+#: data/resources/about.blp:7
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Copyright 2020-2022 Rafael Mardojai CM"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+msgctxt "Add your names here, do not remove previous names!"
+msgid "translator-credits"
+msgstr ""
+"Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Rafael Mardojai CM\n"
+"Luna Jernberg <droidbittin@gmail.com>"
+
+#: data/resources/preferences.blp:7
+msgid "Appearance"
+msgstr "Utseende"
+
+#: data/resources/preferences.blp:10
+msgid "Dark Mode"
+msgstr "Mörkt läge"
+
+#: data/resources/preferences.blp:15
+msgid "Behavior"
+msgstr "Beteende"
+
+#: data/resources/preferences.blp:18
+msgid "Autostart in Background"
+msgstr "Automatisk start i bakgrunden"
+
+#: data/resources/preferences.blp:22
+msgid "Always Start on Pause"
+msgstr "Starta Alltid Pausad"
+
+#: data/resources/preset-dialog.blp:21
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: data/resources/preset-dialog.blp:29
+msgid "Save"
+msgstr "Spara"
+
+#: data/resources/preset-dialog.blp:40
+msgid "Preset Name"
+msgstr "Förinställningens namn"
+
+#: data/resources/preset-row.blp:32
+msgid "Rename Preset"
+msgstr "Byt namn på förinställning"
+
+#: data/resources/preset-row.blp:43
+msgid "Delete Preset"
+msgstr "Ta bort förinställning"
+
+#: data/resources/shortcuts.blp:8
+msgid "General"
+msgstr "Allmänt"
+
+#: data/resources/shortcuts.blp:12 data/resources/window.blp:76
+msgid "Play/Pause Sounds"
+msgstr "Spela/Pausa ljud"
+
+#: data/resources/shortcuts.blp:17
+msgid "Add Custom Sound"
+msgstr "Lägg till anpassat ljud"
+
+#: data/resources/shortcuts.blp:22
+msgid "Close Window"
+msgstr "Stäng fönster"
+
+#: data/resources/shortcuts.blp:27 data/resources/window.blp:105
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: data/resources/shortcuts.blp:32 data/resources/window.blp:110
+msgid "Keyboard Shortcuts"
+msgstr "Tangentbordsgenvägar"
+
+#: data/resources/shortcuts.blp:37 data/resources/window.blp:122
+msgid "Quit"
+msgstr "Avsluta"
+
+#: data/resources/window.blp:24
+msgid "Presets Menu"
+msgstr "Meny för förinställningar"
+
+#: data/resources/window.blp:31
+msgid "Main Menu"
+msgstr "Huvudmeny"
+
+#: data/resources/window.blp:67
+msgid "Volume Menu"
+msgstr "Volymmeny"
+
+#: data/resources/window.blp:84
+msgid "Sounds Menu"
+msgstr "Ljud meny"
+
+#: data/resources/window.blp:98
+msgid "Keep Playing when Closed"
+msgstr "Fortsätt spela när det är avstängt"
+
+#: data/resources/window.blp:115
+msgid "About Blanket"
+msgstr "Om Blanket"
+
+#: data/resources/window.blp:137
+msgid "Reset Sounds"
+msgstr "Återställ ljud"
+
+#: data/resources/window.blp:146
+msgid "Hide Inactive Sounds"
+msgstr "Dölj inaktiva ljud"
+
+#: data/resources/window.blp:151
+msgid "Save as New Preset…"
+msgstr "Spara som ny förinställning…"
+
+#: data/resources/window.blp:157
+msgid "Add Sound…"
+msgstr "Lägg till ljud…"
+
+#: data/resources/window.blp:212
+msgid "Paused to save power"
+msgstr "Pausad för att spara ström"
+
+#: data/resources/window.blp:214
+msgid "_Resume Playing"
+msgstr "_Fortsätt spela"
+
+#: blanket/define.py:11
+msgid "Nature"
+msgstr "Natur"
+
+#: blanket/define.py:23
+msgid "Travel"
+msgstr "Resa"
+
+#: blanket/define.py:31
+msgid "Interiors"
+msgstr "Interiörer"
+
+#: blanket/define.py:38
+msgid "Noise"
+msgstr "Brus"
+
+#: blanket/define.py:48
+msgid "Sounds icons"
+msgstr "Ljudikoner"
+
+#: blanket/define.py:48
+msgid "App icon"
+msgstr "Programikon"
+
+#: blanket/main.py:238
+msgid "Source Code"
+msgstr "Källkod"
+
+#: blanket/main.py:239
+msgid "Sounds by"
+msgstr "Ljud av"
+
+#: blanket/main.py:240
+msgid "Sounds edited by"
+msgstr "Ljud redigerade av"
+
+#: blanket/preferences.py:79
+msgid "Autostart Blanket in background."
+msgstr "Starta Blanket automatiskt i bakgrunden."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+msgid "Request error"
+msgstr "Fel vid begäran"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+msgid "The autostart request failed."
+msgstr "Begäran om automatisk start misslyckades."
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+msgid "Ok"
+msgstr "Ok"
+
+#: blanket/preferences.py:124
+msgid "Authorization failed"
+msgstr "Auktorisering misslyckades"
+
+#: blanket/preferences.py:124
+msgid ""
+"Make sure Blanket has permission to run in the background in Settings → "
+"Applications → Blanket and try again."
+msgstr ""
+"Se till att Blanket har behörighet att köras i bakgrunden gå in i "
+"Inställningar → Program → Blanket och försök igen."
+
+#: blanket/window.py:133
+msgid "Sound Automatically Removed"
+msgstr "Ljud automatiskt borttaget"
+
+#: blanket/window.py:135
+#, python-brace-format
+msgid "The {name} sound is no longer accessible, so it has been removed"
+msgstr "Ljudet {name} är inte längre tillgängligt, så det har tagits bort"
+
+#: blanket/window.py:138
+msgid "Accept"
+msgstr "Acceptera"
+
+#. type: ignore
+#: blanket/window.py:179
+msgid "Open audio"
+msgstr "Öppna ljud"
+
+#. Add new sound item
+#: blanket/window.py:246
+msgid "Add…"
+msgstr "Lägg till…"
+
+#: blanket/widgets/preset_dialog.py:29
+msgid "New Preset"
+msgstr "Ny förinställning"
+
+#: blanket/widgets/preset_dialog.py:33
+msgid "Edit Preset"
+msgstr "Redigera förinställning"
+
+#: blanket/widgets/sound_context_menu.py:24
+msgid "Remove"
+msgstr "Ta bort"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+
+#, fuzzy
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "Tangentbordsgenvägar"
+
+#~ msgid "Add Preset…"
+#~ msgstr "Lägg till förinställningar..."
+
+#~ msgid "Reset Volume Levels"
+#~ msgstr "Återställ volymnivåer"
+
+#~ msgid "Add custom sound"
+#~ msgstr "Lägga till anpassat ljud"
+
+#~ msgid "Custom"
+#~ msgstr "Anpassat"
+
+#~ msgid "Add Preset"
+#~ msgstr "Lägg till förinställning"
+
+#~ msgid "Create"
+#~ msgstr "Skapa"

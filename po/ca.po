@@ -1,0 +1,416 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-07 19:36-0500\n"
+"PO-Revision-Date: 2025-12-16 07:00+0000\n"
+"Last-Translator: Gerard Ricart Castells <gerard.ricart@gmail.com>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/blanket/blanket/"
+"ca/>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.1-dev\n"
+
+#: data/com.rafaelmardojai.Blanket.desktop.in:3
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:6 blanket/main.py:38
+#: blanket/mpris.py:156
+msgid "Blanket"
+msgstr "Manta"
+
+#: data/com.rafaelmardojai.Blanket.desktop.in:4 data/resources/about.blp:6
+#: blanket/mpris.py:154
+msgid "Listen to different sounds"
+msgstr "Escolteu diferents sons"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+msgstr "Concentració;Focus;Soroll;Productivitat;Dormir;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+msgid "Listen to ambient sounds"
+msgstr "Escolta sons d'ambient"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+msgid ""
+"Improve focus and increase your productivity by listening to different "
+"ambient sounds"
+msgstr ""
+"Milloreu la vostra concentració i augmenteu la productivitat escoltant "
+"diferents sons d'ambient"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+msgid "Also can help you to fall asleep in a noisy environment."
+msgstr "També us pot ajudar a adormir en un entorn sorollós."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+msgid "Features:"
+msgstr "Funcionalitats:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+msgid "Save presets"
+msgstr "Desa les combinacions predefinides"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+msgid "Add custom sounds"
+msgstr "Afegeix sons personalitzats"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+msgid "Auto start in background"
+msgstr "Inicia automàticament en segon pla"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+msgid "MPRIS integration"
+msgstr "Integració amb MPRIS"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+msgid "Included Sounds in the App:"
+msgstr "Sons inclosos a l'aplicació:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:20 blanket/define.py:18
+#: blanket/define.py:58 blanket/define.py:69
+msgid "Birds"
+msgstr "Ocells"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:21 blanket/define.py:26
+#: blanket/define.py:54 blanket/define.py:73
+msgid "Boat"
+msgstr "Vaixell"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:22 blanket/define.py:27
+#: blanket/define.py:55 blanket/define.py:74
+msgid "City"
+msgstr "Ciutat"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:23 blanket/define.py:33
+#: blanket/define.py:61
+msgid "Coffee Shop"
+msgstr "Cafè"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:24 blanket/define.py:34
+#: blanket/define.py:53
+msgid "Fireplace"
+msgstr "Llar de foc"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:25 blanket/define.py:40
+#: blanket/define.py:62
+msgid "Pink Noise"
+msgstr "Soroll rosa"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:26 blanket/define.py:13
+#: blanket/define.py:51 blanket/define.py:70
+msgid "Rain"
+msgstr "Pluja"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:27 blanket/define.py:19
+#: blanket/define.py:59
+msgid "Summer Night"
+msgstr "Nit estiuenca"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:28 blanket/define.py:14
+#: blanket/define.py:52 blanket/define.py:71
+msgid "Storm"
+msgstr "Tempesta"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:29 blanket/define.py:17
+#: blanket/define.py:56
+msgid "Stream"
+msgstr "Corrent d'aigua"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:30 blanket/define.py:25
+#: blanket/define.py:64
+msgid "Train"
+msgstr "Tren"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:31 blanket/define.py:16
+#: blanket/define.py:60 blanket/define.py:72
+msgid "Waves"
+msgstr "Onades"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:32 blanket/define.py:41
+#: blanket/define.py:57
+msgid "White Noise"
+msgstr "Soroll blanc"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:33 blanket/define.py:15
+#: blanket/define.py:63 blanket/define.py:75
+msgid "Wind"
+msgstr "Vent"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+msgid "The default screen in light theme"
+msgstr "La pantalla per defecte en el tema clar"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+msgid "The default screen in dark theme"
+msgstr "La pantalla per defecte en el tema fosc"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+msgctxt "visible-name"
+msgid "'Default'"
+msgstr "'Per defecte'"
+
+#: data/resources/about.blp:7
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Drets d’autor © 2020-2022 Rafael Mardojai C. M."
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+msgctxt "Add your names here, do not remove previous names!"
+msgid "translator-credits"
+msgstr ""
+"Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2020, 2022\n"
+"Ícar Nin Solana <icar.nin@protonmail.com>, 2021"
+
+#: data/resources/preferences.blp:7
+msgid "Appearance"
+msgstr "Aparença"
+
+#: data/resources/preferences.blp:10
+msgid "Dark Mode"
+msgstr "Mode fosc"
+
+#: data/resources/preferences.blp:15
+msgid "Behavior"
+msgstr "Comportament"
+
+#: data/resources/preferences.blp:18
+msgid "Autostart in Background"
+msgstr "Inici automàtic en segon pla"
+
+#: data/resources/preferences.blp:22
+msgid "Always Start on Pause"
+msgstr "Sempre inicia en pausa"
+
+#: data/resources/preset-dialog.blp:21
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: data/resources/preset-dialog.blp:29
+msgid "Save"
+msgstr "Desa"
+
+#: data/resources/preset-dialog.blp:40
+msgid "Preset Name"
+msgstr "Nom de la combinació predefinida"
+
+#: data/resources/preset-row.blp:32
+msgid "Rename Preset"
+msgstr "Reanomena la combinació predefinida"
+
+#: data/resources/preset-row.blp:43
+msgid "Delete Preset"
+msgstr "Suprimeix la combinació predefinida"
+
+#: data/resources/shortcuts.blp:8
+msgid "General"
+msgstr "Generals"
+
+#: data/resources/shortcuts.blp:12 data/resources/window.blp:76
+msgid "Play/Pause Sounds"
+msgstr "Reprodueix/Pausa els sons"
+
+#: data/resources/shortcuts.blp:17
+msgid "Add Custom Sound"
+msgstr "Afegeix un so personalitzat"
+
+#: data/resources/shortcuts.blp:22
+msgid "Close Window"
+msgstr "Tanca la finestra"
+
+#: data/resources/shortcuts.blp:27 data/resources/window.blp:105
+msgid "Preferences"
+msgstr "Preferències"
+
+#: data/resources/shortcuts.blp:32 data/resources/window.blp:110
+msgid "Keyboard Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: data/resources/shortcuts.blp:37 data/resources/window.blp:122
+msgid "Quit"
+msgstr "Surt"
+
+#: data/resources/window.blp:24
+msgid "Presets Menu"
+msgstr "Menu d'opcions"
+
+#: data/resources/window.blp:31
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/resources/window.blp:67
+msgid "Volume Menu"
+msgstr "Menú del volum"
+
+#: data/resources/window.blp:84
+msgid "Sounds Menu"
+msgstr "Menú dels sons"
+
+#: data/resources/window.blp:98
+msgid "Keep Playing when Closed"
+msgstr "Continua reproduint en tancar"
+
+#: data/resources/window.blp:115
+msgid "About Blanket"
+msgstr "Quant al Blanket"
+
+#: data/resources/window.blp:137
+msgid "Reset Sounds"
+msgstr "Restableix els sons"
+
+#: data/resources/window.blp:146
+msgid "Hide Inactive Sounds"
+msgstr "Amaga els sons inactius"
+
+#: data/resources/window.blp:151
+msgid "Save as New Preset…"
+msgstr "Desa com una nova configuració…"
+
+#: data/resources/window.blp:157
+msgid "Add Sound…"
+msgstr "Afegeix un so…"
+
+#: data/resources/window.blp:212
+msgid "Paused to save power"
+msgstr "Pausat per estalviar energia"
+
+#: data/resources/window.blp:214
+msgid "_Resume Playing"
+msgstr "_Continuar reproduint"
+
+#: blanket/define.py:11
+msgid "Nature"
+msgstr "Natura"
+
+#: blanket/define.py:23
+msgid "Travel"
+msgstr "Viatjar"
+
+#: blanket/define.py:31
+msgid "Interiors"
+msgstr "Interiors"
+
+#: blanket/define.py:38
+msgid "Noise"
+msgstr "Soroll"
+
+#: blanket/define.py:48
+msgid "Sounds icons"
+msgstr "Icones dels sons"
+
+#: blanket/define.py:48
+msgid "App icon"
+msgstr "Icona de l’aplicació"
+
+#: blanket/main.py:238
+msgid "Source Code"
+msgstr "Codi Font"
+
+#: blanket/main.py:239
+msgid "Sounds by"
+msgstr "Sons de"
+
+#: blanket/main.py:240
+msgid "Sounds edited by"
+msgstr "Sons editats per"
+
+#: blanket/preferences.py:79
+msgid "Autostart Blanket in background."
+msgstr "Inicia automàticament el Blanket en segon pla."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+msgid "Request error"
+msgstr "Error de sol·licitud"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+msgid "The autostart request failed."
+msgstr "La sol·licitud d’inici automàtic ha fallat."
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+msgid "Ok"
+msgstr "D'acord"
+
+#: blanket/preferences.py:124
+msgid "Authorization failed"
+msgstr "Autorització fallida"
+
+#: blanket/preferences.py:124
+msgid ""
+"Make sure Blanket has permission to run in the background in Settings → "
+"Applications → Blanket and try again."
+msgstr ""
+"Assegureu-vos que el Blanket té permisos d’execució en segon pla a "
+"Preferències ▸ Aplicacions ▸ Blanket i torneu-ho a provar."
+
+#: blanket/window.py:133
+msgid "Sound Automatically Removed"
+msgstr "So eliminat automàticament"
+
+#: blanket/window.py:135
+#, python-brace-format
+msgid "The {name} sound is no longer accessible, so it has been removed"
+msgstr "El so {name} ja no és accessible, per això s'ha eliminat"
+
+#: blanket/window.py:138
+msgid "Accept"
+msgstr "Acceptar"
+
+#. type: ignore
+#: blanket/window.py:179
+msgid "Open audio"
+msgstr "Obre un àudio"
+
+#. Add new sound item
+#: blanket/window.py:246
+msgid "Add…"
+msgstr "Afegir…"
+
+#: blanket/widgets/preset_dialog.py:29
+msgid "New Preset"
+msgstr "Nova combinació predefinida"
+
+#: blanket/widgets/preset_dialog.py:33
+msgid "Edit Preset"
+msgstr "Edita la combinació predefinida"
+
+#: blanket/widgets/sound_context_menu.py:24
+msgid "Remove"
+msgstr "Eliminar"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai C. M."
+
+#, fuzzy
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "Dreceres de teclat"
+
+#~ msgid "Add Preset…"
+#~ msgstr "Afegeix una combinació predefinida…"
+
+#~ msgid "Reset Volume Levels"
+#~ msgstr "Reinicialitza els nivells de volum"
+
+#~ msgid "Add custom sound"
+#~ msgstr "Afegeix un so personalitzat"
+
+#~ msgid "Custom"
+#~ msgstr "Personalitzat"
+
+#~ msgid "Add Preset"
+#~ msgstr "Afegeix una combinació predefinida"
+
+#~ msgid "Create"
+#~ msgstr "Crea"

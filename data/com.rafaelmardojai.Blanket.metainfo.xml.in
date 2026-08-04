@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.rafaelmardojai.Blanket</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Blanket</name>
+  <summary>Listen to ambient sounds</summary>
+  <description>
+    <p>Improve focus and increase your productivity by listening to different ambient sounds</p>
+    <p>Also can help you to fall asleep in a noisy environment.</p>
+    <p>Features:</p>
+    <ul>
+      <li>Save presets</li>
+      <li>Add custom sounds</li>
+      <li>Auto start in background</li>
+      <li>MPRIS integration</li>
+    </ul>
+    <p>Included Sounds in the App:</p>
+    <ul>
+      <li>Birds</li>
+      <li>Boat</li>
+      <li>City</li>
+      <li>Coffee Shop</li>
+      <li>Fireplace</li>
+      <li>Pink Noise</li>
+      <li>Rain</li>
+      <li>Summer Night</li>
+      <li>Storm</li>
+      <li>Stream</li>
+      <li>Train</li>
+      <li>Waves</li>
+      <li>White Noise</li>
+      <li>Wind</li>
+    </ul>
+  </description>
+  <url type="homepage">https://apps.gnome.org/Blanket</url>
+  <url type="bugtracker">https://github.com/rafaelmardojai/blanket/issues</url>
+  <url type="translate">https://hosted.weblate.org/engage/blanket/</url>
+  <url type="donation">https://rafaelmardojai.com/donate/</url>
+  <url type="vcs-browser">https://github.com/rafaelmardojai/blanket</url>
+  <!-- developer_name tag deprecated with Appstream 1.0 -->
+  <developer_name translate="no">Rafael Mardojai CM</developer_name>
+  <developer id="com.mardojai">
+      <name translate="no">Rafael Mardojai CM</name>
+  </developer>
+  <update_contact>email_AT_rafaelmardojai.com</update_contact>
+  <content_rating type="oars-1.1" />
+
+  <launchable type="desktop-id">com.rafaelmardojai.Blanket.desktop</launchable>
+  <translation type="gettext">blanket</translation>
+
+  <requires>
+    <internet>offline-only</internet>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://raw.githubusercontent.com/rafaelmardojai/blanket/master/brand/screenshot-1.png</image>
+      <image type="source" xml:lang="ru">https://raw.githubusercontent.com/rafaelmardojai/blanket/master/brand/screenshots/ru/screenshot-1-ru.z.png</image>
+      <image type="source" xml:lang="tr">https://raw.githubusercontent.com/rafaelmardojai/blanket/master/brand/screenshots/tr/screenshot-1-tr.z.png</image>
+      <caption>The default screen in light theme</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://raw.githubusercontent.com/rafaelmardojai/blanket/master/brand/screenshot-1-dark.png</image>
+      <image type="source" xml:lang="ru">https://raw.githubusercontent.com/rafaelmardojai/blanket/master/brand/screenshots/ru/screenshot-1-ru.z-dark.png</image>
+      <caption>The default screen in dark theme</caption>
+    </screenshot>
+  </screenshots>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#c0dcff</color>
+    <color type="primary" scheme_preference="dark">#0d3d76</color>
+  </branding>
+
+  <releases>
+    <release version="0.8.0" date="2025-07-27">
+      <description translate="no">
+        <ul>
+          <li>Allow renaming custom sounds</li>
+          <li>Make suspension inhibition optional and disabled by default</li>
+          <li>Bug fixes</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.7.0" date="2024-04-07">
+      <description translate="no">
+        <ul>
+          <li>Redesign the user interface and use latest GNOME patterns</li>
+          <li>Inhibit suspension when playing</li>
+          <li>Pause playback if the system enters power saver mode</li>
+          <li>MPRIS: Implement Play, Pause and Stop methods in addition to PlayPause</li>
+          <li>MPRIS: Implement Next and Prev methods for navigating presets </li>
+          <li>Updated Pink Noise sample</li>
+          <li>Changed train sound</li>
+          <li>Added preference to always start on pause</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.6.0" date="2022-04-13">
+      <description translate="no">
+        <ul>
+          <li>App ported to GTK 4 and libadwaita</li>
+          <li>User interface refinements</li>
+          <li>New translations added</li>
+          <li>Bug fixes</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.5.0" date="2021-09-28">
+      <description translate="no">
+        <ul>
+          <li>Added new Presets feature</li>
+          <li>Now you can toggle sounds by clicking the row</li>
+          <li>Added new dark mode option</li>
+          <li>Added Tamil translation</li>
+          <li>Added Simplified Chinese translation</li>
+          <li>Added Russian translation</li>
+          <li>Added Irish translation</li>
+          <li>Added Japanese translation</li>
+          <li>Added Indonesian translation</li>
+          <li>Added Finnish translation</li>
+          <li>Added Portuguese translation</li>
+          <li>Added Swedish translation</li>
+          <li>Added Czech translation</li>
+          <li>Added Hungarian translation</li>
+          <li>Added Persian (Farsi) translation</li>
+          <li>Added Galician translation</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.4.1" date="2021-04-26">
+      <description translate="no">
+        <ul>
+          <li>Added Turkish translation</li>
+          <li>Added Occitan translation</li>
+          <li>Fix German and Slovak translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.4.0" date="2021-04-15">
+      <description translate="no">
+        <ul>
+          <li>Added autostart on background feature</li>
+          <li>Added six new sounds</li>
+          <li>New sounds icons, thanks to Jakub Steiner</li>
+          <li>Sounds improvements</li>
+          <li>Added French translation</li>
+          <li>Added Ukrainian translation</li>
+          <li>Added Slovak translation</li>
+          <li>Added Nepali translation</li>
+          <li>Added German translation</li>
+          <li>Added Croatian translation</li>
+          <li>Performance improvements</li>
+          <li>UI improvements</li>
+          <li>Bug fixes</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.1" date="2020-09-12">
+      <description translate="no">
+        <ul>
+          <li>Added Brazilian Portuguese translation</li>
+          <li>Bug fixes</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0" date="2020-09-11">
+      <description translate="no">
+        <ul>
+          <li>Added play/pause action</li>
+          <li>Added general volume control</li>
+          <li>Added MPRIS support</li>
+          <li>Allow playback when window is closed</li>
+          <li>Save window scroll position</li>
+          <li>Added Dutch translation</li>
+          <li>Added Basque translation</li>
+          <li>Added Esperanto translation</li>
+          <li>Added Catalan translation</li>
+          <li>UI tweaks and improvements</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.2.0" date="2020-09-02">
+      <description translate="no">
+        <ul>
+          <li>Better White Noise</li>
+          <li>Added Italian translation</li>
+          <li>Fix GStreamer init bug</li>
+          <li>UI tweaks and improvements</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.1.0" date="2020-09-01">
+      <description translate="no">
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
+</component>

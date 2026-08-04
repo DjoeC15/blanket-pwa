@@ -1,0 +1,528 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #1c1c2a;
+  --surface:      #252637;
+  --surface2:     #2d2e47;
+  --accent:       #78b2f5;
+  --accent-dim:   rgba(120, 178, 245, 0.18);
+  --accent-glow:  rgba(120, 178, 245, 0.35);
+  --text:         #e8e8f0;
+  --text-dim:     #8888a8;
+  --border:       rgba(255, 255, 255, 0.07);
+  --radius:       18px;
+  --topbar-h:     60px;
+  --bottombar-h:  82px;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ─── App Shell ─────────────────────────────────── */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ─── Top Bar ───────────────────────────────────── */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: env(safe-area-inset-top, 0) 16px 0;
+  height: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-icon { font-size: 22px; }
+
+.app-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.topbar-right { display: flex; gap: 8px; }
+
+/* ─── Content / Sound Grid ──────────────────────── */
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.content::-webkit-scrollbar { display: none; }
+
+.category { margin-bottom: 24px; }
+
+.category-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.sound-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* ─── Sound Card ────────────────────────────────── */
+
+.sound-card {
+  position: relative;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 12px 12px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s, background 0.2s, transform 0.12s;
+  overflow: hidden;
+}
+
+.sound-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% -10%, var(--accent-dim), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.sound-card.active {
+  border-color: var(--accent);
+  background: var(--surface2);
+}
+
+.sound-card.active::after { opacity: 1; }
+
+.sound-card:active { transform: scale(0.96); }
+
+.active-dot {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.sound-emoji {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.sound-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.sound-card.active .sound-name { color: var(--accent); }
+
+/* Volume Slider (inside card) */
+.sound-volume {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  display: block;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+
+.sound-card.active .sound-volume { opacity: 1; }
+
+.sound-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px var(--accent-glow);
+  transition: transform 0.12s;
+}
+
+.sound-volume:active::-webkit-slider-thumb { transform: scale(1.35); }
+
+.sound-volume::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ─── Bottom Bar ────────────────────────────────── */
+
+.bottombar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  height: calc(var(--bottombar-h) + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.master-vol {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  color: var(--text-dim);
+}
+
+.master-vol input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.master-vol input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--text);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+
+.master-vol input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
+
+.master-vol input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ─── Play Button ───────────────────────────────── */
+
+.play-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0a0a18;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 14px;
+  box-shadow: 0 0 18px rgba(120, 178, 245, 0.3);
+  transition: box-shadow 0.25s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.play-btn:active { transform: scale(0.92); }
+
+.play-btn.playing {
+  box-shadow: 0 0 28px rgba(120, 178, 245, 0.55), 0 0 60px rgba(120, 178, 245, 0.2);
+}
+
+/* ─── Icon Button ───────────────────────────────── */
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon-btn:active {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+/* ─── Modal ─────────────────────────────────────── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+
+.modal-overlay.hidden { display: none; }
+
+.modal {
+  background: var(--surface);
+  border-radius: 24px 24px 0 0;
+  width: 100%;
+  max-height: 72vh;
+  padding: 20px 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom, 20px));
+  border-top: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* ─── Preset List ───────────────────────────────── */
+
+.preset-list { display: flex; flex-direction: column; gap: 8px; }
+
+.preset-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--surface2);
+  border-radius: 14px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.preset-item:active { opacity: 0.7; }
+.preset-item.active { border-color: var(--accent); }
+
+.preset-name {
+  font-size: 15px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.preset-delete {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0 0 12px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.no-presets {
+  text-align: center;
+  color: var(--text-dim);
+  padding: 36px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ─── Text Input ────────────────────────────────── */
+
+.text-input {
+  display: block;
+  width: 100%;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+  margin-bottom: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.text-input:focus { border-color: var(--accent); }
+.text-input::placeholder { color: var(--text-dim); }
+
+/* ─── Primary Button ────────────────────────────── */
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: #0a0a18;
+  border: none;
+  border-radius: 14px;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+/* ─── Toast ─────────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  bottom: calc(var(--bottombar-h) + env(safe-area-inset-bottom, 0px) + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--surface2);
+  color: var(--text);
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 200;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── Add Sound Card ────────────────────────────── */
+
+.add-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 108px;
+  border-style: dashed;
+  opacity: 0.55;
+  transition: opacity 0.2s, transform 0.12s;
+}
+
+.add-card:active { opacity: 1; transform: scale(0.96); }
+
+.add-icon {
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ─── Custom Sound Cards ────────────────────────── */
+
+/* Active dot moves to top-left on custom cards (delete btn at top-right) */
+.sound-card[data-custom="true"] .active-dot {
+  left: 11px;
+  right: auto;
+}
+
+.sound-delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 107, 107, 0.08);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 107, 107, 0.5);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sound-delete:active {
+  background: rgba(255, 107, 107, 0.25);
+  color: #ff6b6b;
+}
+
+.custom-sound-name {
+  font-size: 12px;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Utility ───────────────────────────────────── */
+
+.hidden { display: none !important; }
