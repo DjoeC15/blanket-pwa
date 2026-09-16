@@ -18,6 +18,10 @@
 
 // Longueur maximale d'une boucle gardée en mémoire. Au-delà le son est coupé.
 // À 48 kHz mono float32, 45 s ≈ 8,6 Mo par son.
+//
+// C'est le défaut, taillé pour les bruits d'ambiance intégrés (plusieurs
+// dépassent 2 min) : la coupe ne s'y entend pas. Un son importé, lui, doit
+// être joué en entier — register() accepte une limite par son.
 const MAX_LOOP_SECONDS = 45;
 
 // Crossfade appliqué à la jointure de boucle. Long quand on coupe un son
@@ -31,8 +35,9 @@ const SEAM_CROSSFADE_SECONDS = 0.08;
 const FADE_SECONDS = 0.25;
 
 // Version du format de cache PCM. À incrémenter si l'une des constantes
-// ci-dessus ou le down-mix changent, afin d'invalider les caches existants.
-const PCM_CACHE_VERSION = 1;
+// ci-dessus, le down-mix ou le format de clé changent : les entrées d'une
+// autre version sont purgées à l'ouverture du cache.
+const PCM_CACHE_VERSION = 2;
 
 /**
  * Sortie audio.
@@ -82,10 +87,20 @@ class PcmCache {
           db.createObjectStore('pcm', { keyPath: 'key' });
         }
       };
-      req.onsuccess = e => { this._db = e.target.result; resolve(); };
+      req.onsuccess = e => { this._db = e.target.result; resolve(); this._prune(); };
       req.onerror   = () => resolve();
       req.onblocked = () => resolve();
     });
+  }
+
+  /** Supprime les entrées écrites par une autre version du format. */
+  _prune() {
+    const suffix = `@v${PCM_CACHE_VERSION}`;
+    this._run('readonly', s => s.getAllKeys())
+      .then(keys => (keys || [])
+        .filter(k => !String(k).endsWith(suffix))
+        .forEach(k => this.remove(k)))
+      .catch(() => {});
   }
 
   async _run(mode, fn) {
@@ -179,11 +194,18 @@ class AudioEngine {
 
   // ─── Enregistrement des sons ───────────────────────
 
-  /** @param {{url?: string, blob?: Blob}} source */
-  register(id, source) {
+  /**
+   * @param {{url?: string, blob?: Blob}} source
+   * @param {{maxSeconds?: number, onTrim?: (duration: number) => void}} [options]
+   *   maxSeconds — durée gardée en mémoire (défaut MAX_LOOP_SECONDS).
+   *   onTrim     — appelé au décodage si le son a dû être coupé à maxSeconds.
+   */
+  register(id, source, { maxSeconds = MAX_LOOP_SECONDS, onTrim = null } = {}) {
     if (this.entries.has(id)) return;
     this.entries.set(id, {
       source,
+      maxSeconds,
+      onTrim,
       gain:    null,
       buffer:  null,
       node:    null,
@@ -200,7 +222,7 @@ class AudioEngine {
     if (entry.gain) { try { entry.gain.disconnect(); } catch (_) {} }
     entry.buffer = null;
     this.entries.delete(id);
-    this._cache.remove(this._cacheKey(id)).catch(() => {});
+    this._cache.remove(this._cacheKey(id, entry)).catch(() => {});
   }
 
   // ─── Lecture ───────────────────────────────────────
@@ -301,7 +323,9 @@ class AudioEngine {
 
   // ─── Chargement & traitement ───────────────────────
 
-  _cacheKey(id) { return `${id}@${this.sampleRate}@v${PCM_CACHE_VERSION}`; }
+  _cacheKey(id, entry) {
+    return `${id}@${this.sampleRate}@${entry.maxSeconds}s@v${PCM_CACHE_VERSION}`;
+  }
 
   _buffer(id, entry) {
     if (entry.buffer) return Promise.resolve(entry.buffer);
@@ -320,7 +344,7 @@ class AudioEngine {
 
   async _load(id, entry) {
     const rate = this.ctx.sampleRate;
-    const key  = this._cacheKey(id);
+    const key  = this._cacheKey(id, entry);
 
     // 1. PCM déjà traité lors d'une session précédente ?
     const cached = await this._cache.get(key);
@@ -342,7 +366,11 @@ class AudioEngine {
     const decoded = await this._decode(bytes);
 
     // 4. Mono, au sampleRate du contexte, coupé si trop long
-    const processed = await this._process(decoded);
+    const trimmed   = decoded.duration > entry.maxSeconds;
+    const processed = await this._process(decoded, entry.maxSeconds);
+    if (trimmed && entry.onTrim) {
+      try { entry.onTrim(decoded.duration); } catch (_) {}
+    }
 
     // 5. Mise en cache (best-effort, ne doit jamais bloquer la lecture)
     this._cache
@@ -363,13 +391,13 @@ class AudioEngine {
   /**
    * Down-mix mono + rééchantillonnage vers le sampleRate du contexte, via un
    * OfflineAudioContext à 1 canal (le mixage stéréo→mono est fait par Web
-   * Audio). Les sons plus longs que MAX_LOOP_SECONDS sont coupés.
+   * Audio). Les sons plus longs que maxSeconds sont coupés.
    */
-  async _process(buffer) {
+  async _process(buffer, maxSeconds) {
     const rate     = this.ctx.sampleRate;
-    const trimming = buffer.duration > MAX_LOOP_SECONDS;
+    const trimming = buffer.duration > maxSeconds;
     const crossfade = trimming ? TRIM_CROSSFADE_SECONDS : SEAM_CROSSFADE_SECONDS;
-    const seconds  = trimming ? MAX_LOOP_SECONDS + crossfade : buffer.duration;
+    const seconds  = trimming ? maxSeconds + crossfade : buffer.duration;
     const frames   = Math.floor(Math.min(seconds, buffer.duration) * rate);
 
     const Ctor = window.OfflineAudioContext || window.webkitOfflineAudioContext;

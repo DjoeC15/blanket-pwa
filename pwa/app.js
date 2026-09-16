@@ -21,6 +21,12 @@ const SOUND_PATH   = '../data/resources/sounds/';
 const PRESETS_KEY  = 'blanket_presets';
 const SETTINGS_KEY = 'blanket_settings';
 
+// Durée gardée en mémoire pour un son importé. Les bruits intégrés sont coupés
+// à 45 s sans que ça s'entende ; un fichier importé doit être joué en entier.
+// La limite ne sert qu'à borner la mémoire : 10 min ≈ 115 Mo de PCM à 48 kHz,
+// plus le pic transitoire du décodage (le fichier entier en stéréo).
+const CUSTOM_MAX_SECONDS = 10 * 60;
+
 // ─── IndexedDB (stockage des sons personnalisés) ─────────────────────────────
 
 class SoundDB {
@@ -240,7 +246,10 @@ class BlanketApp {
   _mountCustomSound(id, name, blob) {
     this.states[id] = { active: false, volume: 0.5 };
     this.titles[id] = name;
-    this.engine.register(id, { blob });
+    this.engine.register(id, { blob }, {
+      maxSeconds: CUSTOM_MAX_SECONDS,
+      onTrim: () => this._toast(`"${name}" trimmed to ${CUSTOM_MAX_SECONDS / 60} min`),
+    });
 
     const card = this._makeCustomCard({ id, name });
     const grid = document.getElementById('customGrid');
