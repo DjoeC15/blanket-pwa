@@ -105,9 +105,8 @@ const I18N = {
     hapticsSub: 'Vibrate lightly on taps',
     about: 'About',
     version: 'Version {v}',
-    credit: 'Based on Blanket by Rafael Mardojai. Sounds are licensed under Creative Commons.',
+    credit: 'Blanket was created by Rafael Mardojai CM. This Android version is an unofficial adaptation.',
     aboutBody: 'Listen to ambient sounds to improve focus and productivity, or to fall asleep.',
-    basedOn: 'Based on Blanket by Rafael Mardojai.',
 
     howToUse: 'How to use',
     helpIntro: 'Blanket mixes ambient sounds to help you focus or fall asleep. Here is everything it can do.',
@@ -128,6 +127,13 @@ const I18N = {
     'help.oled.t': 'Save battery',
     'help.oled.d': 'Pause when you are done: a paused Blanket uses no processor. On OLED screens, “Pure black” in Settings also helps.',
     gotIt: 'Got it',
+
+    soundCredits: 'Sound credits',
+    soundCreditsIntro: 'Blanket’s sounds were recorded by these authors and are shared under the licenses below. Tap a sound to open its source.',
+    byAuthor: 'by {name}',
+    editedBy: 'edited by {name}',
+    publicDomain: 'Public domain',
+    creditOriginal: 'Blanket and its sound selection were created by Rafael Mardojai CM and contributors. This Android version is an unofficial adaptation.',
   },
 
   fr: {
@@ -216,9 +222,8 @@ const I18N = {
     hapticsSub: 'Légère vibration au toucher',
     about: 'À propos',
     version: 'Version {v}',
-    credit: 'Basé sur Blanket de Rafael Mardojai. Sons sous licence Creative Commons.',
+    credit: 'Blanket a été créé par Rafael Mardojai CM. Cette version Android en est une adaptation non officielle.',
     aboutBody: 'Écoutez des sons d’ambiance pour vous concentrer, être plus productif ou vous endormir.',
-    basedOn: 'Basé sur Blanket de Rafael Mardojai.',
 
     howToUse: 'Mode d’emploi',
     helpIntro: 'Blanket mélange des sons d’ambiance pour vous aider à vous concentrer ou à vous endormir. Voici tout ce qu’il sait faire.',
@@ -239,6 +244,13 @@ const I18N = {
     'help.oled.t': 'Économiser la batterie',
     'help.oled.d': 'Mettez en pause quand vous avez fini : en pause, Blanket n’utilise pas le processeur. Sur écran OLED, « Noir pur » dans les paramètres aide aussi.',
     gotIt: 'Compris',
+
+    soundCredits: 'Crédits des sons',
+    soundCreditsIntro: 'Les sons de Blanket ont été enregistrés par ces auteurs et sont partagés sous les licences indiquées. Touchez un son pour ouvrir sa source.',
+    byAuthor: 'par {name}',
+    editedBy: 'édité par {name}',
+    publicDomain: 'Domaine public',
+    creditOriginal: 'Blanket et sa sélection de sons ont été créés par Rafael Mardojai CM et ses contributeurs. Cette version Android en est une adaptation non officielle.',
   },
 
   es: {
@@ -327,9 +339,8 @@ const I18N = {
     hapticsSub: 'Vibración suave al tocar',
     about: 'Acerca de',
     version: 'Versión {v}',
-    credit: 'Basado en Blanket de Rafael Mardojai. Sonidos con licencia Creative Commons.',
+    credit: 'Blanket fue creado por Rafael Mardojai CM. Esta versión para Android es una adaptación no oficial.',
     aboutBody: 'Escucha sonidos ambientales para concentrarte, ser más productivo o dormirte.',
-    basedOn: 'Basado en Blanket de Rafael Mardojai.',
 
     howToUse: 'Cómo se usa',
     helpIntro: 'Blanket mezcla sonidos ambientales para ayudarte a concentrarte o a dormir. Esto es todo lo que puede hacer.',
@@ -350,6 +361,13 @@ const I18N = {
     'help.oled.t': 'Ahorra batería',
     'help.oled.d': 'Pausa cuando termines: en pausa, Blanket no usa el procesador. En pantallas OLED, «Negro puro» en Ajustes también ayuda.',
     gotIt: 'Entendido',
+
+    soundCredits: 'Créditos de los sonidos',
+    soundCreditsIntro: 'Los sonidos de Blanket fueron grabados por estos autores y se comparten con las licencias indicadas. Toca un sonido para abrir su fuente.',
+    byAuthor: 'de {name}',
+    editedBy: 'editado por {name}',
+    publicDomain: 'Dominio público',
+    creditOriginal: 'Blanket y su selección de sonidos fueron creados por Rafael Mardojai CM y sus colaboradores. Esta versión para Android es una adaptación no oficial.',
   },
 
   de: {
@@ -438,9 +456,8 @@ const I18N = {
     hapticsSub: 'Leichte Vibration beim Tippen',
     about: 'Über',
     version: 'Version {v}',
-    credit: 'Basiert auf Blanket von Rafael Mardojai. Klänge unter Creative-Commons-Lizenz.',
+    credit: 'Blanket wurde von Rafael Mardojai CM entwickelt. Diese Android-Version ist eine inoffizielle Anpassung.',
     aboutBody: 'Höre Umgebungsklänge, um dich zu konzentrieren, produktiver zu sein oder einzuschlafen.',
-    basedOn: 'Basiert auf Blanket von Rafael Mardojai.',
 
     howToUse: 'Anleitung',
     helpIntro: 'Blanket mischt Umgebungsklänge, damit du dich konzentrieren oder einschlafen kannst. Das kann die App:',
@@ -461,6 +478,13 @@ const I18N = {
     'help.oled.t': 'Akku sparen',
     'help.oled.d': 'Pausiere, wenn du fertig bist: Pausiert braucht Blanket keine Rechenleistung. Bei OLED-Displays hilft auch „Reines Schwarz“ in den Einstellungen.',
     gotIt: 'Verstanden',
+
+    soundCredits: 'Klangnachweise',
+    soundCreditsIntro: 'Die Klänge von Blanket wurden von diesen Urhebern aufgenommen und stehen unter den angegebenen Lizenzen. Tippe auf einen Klang, um die Quelle zu öffnen.',
+    byAuthor: 'von {name}',
+    editedBy: 'bearbeitet von {name}',
+    publicDomain: 'Gemeinfrei',
+    creditOriginal: 'Blanket und seine Klangauswahl stammen von Rafael Mardojai CM und Mitwirkenden. Diese Android-Version ist eine inoffizielle Anpassung.',
   },
 
   pt: {
@@ -549,9 +573,8 @@ const I18N = {
     hapticsSub: 'Vibração leve ao tocar',
     about: 'Sobre',
     version: 'Versão {v}',
-    credit: 'Baseado no Blanket de Rafael Mardojai. Sons sob licença Creative Commons.',
+    credit: 'O Blanket foi criado por Rafael Mardojai CM. Esta versão para Android é uma adaptação não oficial.',
     aboutBody: 'Ouça sons ambientes para se concentrar, ser mais produtivo ou pegar no sono.',
-    basedOn: 'Baseado no Blanket de Rafael Mardojai.',
 
     howToUse: 'Como usar',
     helpIntro: 'O Blanket mistura sons ambientes para ajudar você a se concentrar ou dormir. Veja tudo o que ele faz.',
@@ -572,6 +595,13 @@ const I18N = {
     'help.oled.t': 'Economize bateria',
     'help.oled.d': 'Pause quando terminar: pausado, o Blanket não usa o processador. Em telas OLED, “Preto puro” nas Configurações também ajuda.',
     gotIt: 'Entendi',
+
+    soundCredits: 'Créditos dos sons',
+    soundCreditsIntro: 'Os sons do Blanket foram gravados por estes autores e são compartilhados sob as licenças indicadas. Toque em um som para abrir a fonte.',
+    byAuthor: 'por {name}',
+    editedBy: 'editado por {name}',
+    publicDomain: 'Domínio público',
+    creditOriginal: 'O Blanket e sua seleção de sons foram criados por Rafael Mardojai CM e colaboradores. Esta versão para Android é uma adaptação não oficial.',
   },
 
   it: {
@@ -660,9 +690,8 @@ const I18N = {
     hapticsSub: 'Leggera vibrazione al tocco',
     about: 'Informazioni',
     version: 'Versione {v}',
-    credit: 'Basato su Blanket di Rafael Mardojai. Suoni con licenza Creative Commons.',
+    credit: 'Blanket è stato creato da Rafael Mardojai CM. Questa versione Android è un adattamento non ufficiale.',
     aboutBody: 'Ascolta suoni ambientali per concentrarti, essere più produttivo o addormentarti.',
-    basedOn: 'Basato su Blanket di Rafael Mardojai.',
 
     howToUse: 'Come si usa',
     helpIntro: 'Blanket mescola suoni ambientali per aiutarti a concentrarti o ad addormentarti. Ecco tutto ciò che sa fare.',
@@ -683,6 +712,13 @@ const I18N = {
     'help.oled.t': 'Risparmia batteria',
     'help.oled.d': 'Metti in pausa quando hai finito: in pausa Blanket non usa il processore. Sugli schermi OLED aiuta anche «Nero puro» nelle Impostazioni.',
     gotIt: 'Ho capito',
+
+    soundCredits: 'Crediti dei suoni',
+    soundCreditsIntro: 'I suoni di Blanket sono stati registrati da questi autori e sono condivisi con le licenze indicate. Tocca un suono per aprirne la fonte.',
+    byAuthor: 'di {name}',
+    editedBy: 'modificato da {name}',
+    publicDomain: 'Pubblico dominio',
+    creditOriginal: 'Blanket e la sua selezione di suoni sono stati creati da Rafael Mardojai CM e dai collaboratori. Questa versione Android è un adattamento non ufficiale.',
   },
 };
 

@@ -17,6 +17,25 @@ const SOUNDS = [
   { name: 'white-noise',  category: 'Noise',     icon: 'blur_on' },
 ];
 
+// Repris de SOUNDS_LICENSING.md : plusieurs sons sont en CC BY / CC BY-SA,
+// qui imposent de nommer leurs auteurs là où l'app les diffuse.
+const SOUND_CREDITS = {
+  'rain':         { author: 'alex36917',      editor: 'Porrumentzio', license: 'CC BY',     url: 'https://freesound.org/people/alex36917/sounds/524605/' },
+  'storm':        { author: 'Digifish music', editor: 'Porrumentzio', license: 'CC BY',     url: 'https://freesound.org/people/digifishmusic/sounds/41739/' },
+  'wind':         { author: 'felix.blume',    editor: 'Porrumentzio', license: 'CC0',       url: 'https://freesound.org/people/felix.blume/sounds/217506/' },
+  'waves':        { author: 'Luftrum',        editor: 'Porrumentzio', license: 'CC BY',     url: 'https://freesound.org/people/Luftrum/sounds/48412/' },
+  'stream':       { author: 'gluckose',                               license: 'CC0',       url: 'https://freesound.org/people/gluckose/sounds/333987/' },
+  'birds':        { author: 'kvgarlic',       editor: 'Porrumentzio', license: 'CC0',       url: 'https://freesound.org/people/kvgarlic/sounds/156826/' },
+  'summer-night': { author: 'Lisa Redfern',                           license: 'pd',        url: 'https://soundbible.com/2083-Crickets-Chirping-At-Night.html' },
+  'train':        { author: 'SDLx',                                   license: 'CC BY 3.0', url: 'https://freesound.org/people/SDLx/sounds/259988/' },
+  'boat':         { author: 'Falcet',         editor: 'Porrumentzio', license: 'CC0',       url: 'https://freesound.org/people/Falcet/sounds/439365/' },
+  'city':         { author: 'gezortenplotz',  editor: 'Porrumentzio', license: 'CC BY',     url: 'https://freesound.org/people/gezortenplotz/sounds/44796/' },
+  'coffee-shop':  { author: 'stephan',                                license: 'pd',        url: 'https://soundbible.com/1664-Restaurant-Ambiance.html' },
+  'fireplace':    { author: 'ezwa',                                   license: 'pd',        url: 'https://soundbible.com/1543-Fireplace.html' },
+  'pink-noise':   { author: 'Omegatron',                              license: 'CC BY-SA',  url: 'https://es.wikipedia.org/wiki/Archivo:Pink_noise.ogg' },
+  'white-noise':  { author: 'Jorge Stolfi',                           license: 'CC BY-SA',  url: 'https://commons.wikimedia.org/w/index.php?title=File%3AWhite-noise-sound-20sec-mono-44100Hz.ogg' },
+};
+
 const CUSTOM_CATEGORY = 'My sounds';
 const CATEGORIES      = [...new Set(SOUNDS.map(s => s.category)), CUSTOM_CATEGORY];
 
@@ -927,6 +946,8 @@ class BlanketApp {
         h('h2.section-label', {}, t('about')),
         h('button.list-item.pressable', { onclick: () => this._openHelp() },
           icon('help'), h('span.text', {}, h('strong', {}, t('howToUse')))),
+        h('button.list-item.pressable', { onclick: () => this._openSoundCredits() },
+          icon('attribution'), h('span.text', {}, h('strong', {}, t('soundCredits')))),
         h('div.about-card', {}, h('img', { src: 'icons/icon-192.png', alt: '' }),
           h('div', {}, h('strong', {}, 'Blanket'), h('small', {}, t('version', { v: APP_VERSION })))),
         h('p.credit', {}, t('credit')),
@@ -986,6 +1007,28 @@ class BlanketApp {
     this._updateMediaSession();
     // Les écrans ouverts (Paramètres, mode d'emploi) se reconstruisent.
     this._stack.forEach(l => l.rebuild?.());
+  }
+
+  // ─── Crédits des sons ──────────────────────────────
+
+  _openSoundCredits() {
+    this._screen('soundCredits', body => {
+      body.append(
+        h('p.help-intro', {}, t('soundCreditsIntro')),
+        ...SOUNDS.map(({ name, icon: iconName }) => {
+          const c = SOUND_CREDITS[name];
+          const meta = [t('byAuthor', { name: c.author }), c.license === 'pd' ? t('publicDomain') : c.license];
+          if (c.editor) meta.push(t('editedBy', { name: c.editor }));
+          // Dans l'APK, Capacitor confie les URL externes au navigateur.
+          return h('a.list-item.two-line.pressable.credit-link', {
+            href: c.url, target: '_blank', rel: 'noopener noreferrer',
+          }, icon(iconName),
+            h('span.text', {}, h('strong', {}, this._title(name)), h('small', {}, meta.join(' · '))),
+            icon('open_in_new'));
+        }),
+        h('p.help-intro', {}, t('creditOriginal')),
+      );
+    });
   }
 
   // ─── Mode d'emploi ─────────────────────────────────
@@ -1279,7 +1322,7 @@ class BlanketApp {
         t('version', { v: APP_VERSION }), h('br'), h('br'),
         t('aboutBody'),
         h('br'), h('br'),
-        t('basedOn'))],
+        t('credit'))],
       actions: [{ label: t('ok') }],
     });
   }
