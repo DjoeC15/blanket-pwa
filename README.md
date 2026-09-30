@@ -6,6 +6,37 @@
 
 <br>
 
+> [!NOTE]
+> **This repository is an unofficial Android adaptation of Blanket.**
+>
+> **Blanket was created by [Rafael Mardojai CM](https://github.com/rafaelmardojai)** and its [contributors](https://github.com/rafaelmardojai/blanket/graphs/contributors). The app, its concept, its design, its name and its sound selection are theirs. The original project lives at **[rafaelmardojai/blanket](https://github.com/rafaelmardojai/blanket)** — please star it, report desktop issues there, and [support its author](https://rafaelmardojai.com/donate/).
+>
+> This fork, maintained by [DjoeC15](https://github.com/DjoeC15), only **adapts Blanket to Android**. It is not affiliated with or endorsed by the original author, and bugs in the Android version should be reported [here](https://github.com/DjoeC15/blanket-pwa/issues), not upstream.
+
+## Android version
+
+What this fork adds on top of the original Blanket, and nothing more:
+
+- A web port of the player (`pwa/`), packaged as an Android app with [Capacitor](https://capacitorjs.com/) (`android/`).
+- A single Web Audio mixing graph instead of one decoder per sound, so it can play all night on battery.
+- A native foreground service and media notification, so playback survives the screen being off and can be controlled from the lock screen or a Bluetooth speaker.
+- A Material 3 interface, a sleep timer, saved mixes, imported sounds, color themes, and six interface languages.
+
+Sound names and categories in the Android interface reuse the translations of the original project (`po/`). The desktop GTK app (`blanket/`, `data/`, `po/`) is kept as it was upstream.
+
+**Download:** see [Releases](https://github.com/DjoeC15/blanket-pwa/releases).
+
+### Credits and license
+
+- **Original app:** Blanket by [Rafael Mardojai CM](https://github.com/rafaelmardojai) and [contributors](https://github.com/rafaelmardojai/blanket/graphs/contributors). Thanks to Jorge Toledo for the name idea.
+- **Sounds:** by the authors listed in [SOUNDS_LICENSING.md](SOUNDS_LICENSING.md), each under its own license (CC0, CC BY, CC BY-SA, public domain). The Android version ships the original sound files unchanged.
+- **Android adaptation:** [DjoeC15](https://github.com/DjoeC15).
+- **License:** like the original, this fork is distributed under the [GNU General Public License v3.0 or later](COPYING).
+
+---
+
+*The original Blanket README follows.*
+
 [![GNMOME Circle](https://gitlab.gnome.org/Teams/Circle/-/raw/master/assets/button/badge.svg)](https://circle.gnome.org/)
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 
