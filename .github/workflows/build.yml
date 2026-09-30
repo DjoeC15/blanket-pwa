@@ -82,6 +82,10 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     needs: debug
+    # Le GITHUB_TOKEN est en lecture seule par défaut sur ce dépôt : sans ça,
+    # « Resource not accessible by integration » à la création de la release.
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
