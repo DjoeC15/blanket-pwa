@@ -1,4 +1,4 @@
-package com.rafaelmardojai.blanket;
+package com.djoec15.blanket;
 
 import android.graphics.Color;
 import android.os.Build;

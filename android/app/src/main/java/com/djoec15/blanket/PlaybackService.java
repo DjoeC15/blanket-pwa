@@ -1,4 +1,4 @@
-package com.rafaelmardojai.blanket;
+package com.djoec15.blanket;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -28,10 +28,10 @@ import android.os.IBinder;
  */
 public class PlaybackService extends Service {
 
-    public static final String ACTION_START = "com.rafaelmardojai.blanket.START";
-    public static final String ACTION_UPDATE = "com.rafaelmardojai.blanket.UPDATE";
-    public static final String ACTION_PLAY = "com.rafaelmardojai.blanket.PLAY";
-    public static final String ACTION_PAUSE = "com.rafaelmardojai.blanket.PAUSE";
+    public static final String ACTION_START = "com.djoec15.blanket.START";
+    public static final String ACTION_UPDATE = "com.djoec15.blanket.UPDATE";
+    public static final String ACTION_PLAY = "com.djoec15.blanket.PLAY";
+    public static final String ACTION_PAUSE = "com.djoec15.blanket.PAUSE";
 
     public static final String EXTRA_PLAYING = "playing";
     public static final String EXTRA_TITLE = "title";

@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Blanket</string>
     <string name="title_activity_main">Blanket</string>
-    <string name="package_name">com.rafaelmardojai.blanket</string>
-    <string name="custom_url_scheme">com.rafaelmardojai.blanket</string>
+    <string name="package_name">com.djoec15.blanket</string>
+    <string name="custom_url_scheme">com.djoec15.blanket</string>
 </resources>

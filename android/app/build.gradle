@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.rafaelmardojai.blanket"
+    namespace "com.djoec15.blanket"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.rafaelmardojai.blanket"
+        applicationId "com.djoec15.blanket"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2
