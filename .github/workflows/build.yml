@@ -31,10 +31,10 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Node 20
+      - name: Node 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       # Indispensable même si le projet Android est versionné :
@@ -65,7 +65,11 @@ jobs:
         working-directory: android
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
+      # Non bloquant : le 2026-09-16 le stockage d'artefacts a répondu 403 alors
+      # que le build avait réussi, et le job release (needs: debug) aurait été
+      # sauté pour une simple copie de l'APK de debug.
       - name: Publier l'APK
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: blanket-debug-${{ github.sha }}
@@ -104,16 +108,24 @@ jobs:
             exit 1
           fi
 
+      - name: Vérifier la note de version
+        run: |
+          notes=".github/release-notes/${GITHUB_REF_NAME}.md"
+          if [ ! -f "$notes" ]; then
+            echo "Note de version manquante : $notes"
+            exit 1
+          fi
+
       - name: Java 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Node 20
+      - name: Node 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Dépendances Capacitor
@@ -144,15 +156,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           name: Blanket ${{ github.ref_name }}
-          body: |
-            ## Blanket ${{ github.ref_name }}
-
-            ### Installation
-            Télécharge l'APK ci-dessous, autorise l'installation depuis des
-            sources inconnues sur ton Android, puis installe-le.
-
-            ### Changelog
-            _À compléter._
+          # Une note par version : .github/release-notes/<tag>.md
+          body_path: .github/release-notes/${{ github.ref_name }}.md
           files: android/app/build/outputs/apk/release/app-release.apk
           draft: false
           prerelease: false
