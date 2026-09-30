@@ -19,8 +19,9 @@ ASSETS   = os.path.join(ROOT, 'android', 'app', 'src', 'main', 'assets')
 ANDROID  = os.path.join(ASSETS, 'public')
 CAP_CONF = os.path.join(ROOT, 'capacitor.config.json')
 
-WEB_FILES = ['index.html', 'style.css', 'audio-engine.js', 'app.js',
+WEB_FILES = ['index.html', 'style.css', 'i18n.js', 'audio-engine.js', 'app.js',
              'manifest.json', 'sw.js']
+ASSET_DIRS = ['icons', 'fonts']
 
 SOUND_PATH_SRC = "const SOUND_PATH   = '../data/resources/sounds/';"
 SOUND_PATH_APK = "const SOUND_PATH   = './sounds/';"
@@ -48,15 +49,15 @@ def build():
     open(app_js, 'w', encoding='utf-8').write(code.replace(SOUND_PATH_SRC, SOUND_PATH_APK))
     print(f'  SOUND_PATH réécrit  -> ./sounds/')
 
-    stamp_service_worker()
+    # Icônes de l'app et police d'icônes (embarquée : l'APK marche hors-ligne)
+    for folder in ASSET_DIRS:
+        dst = os.path.join(WWW, folder)
+        if os.path.isdir(dst):
+            shutil.rmtree(dst)
+        shutil.copytree(os.path.join(PWA, folder), dst)
+        print(f'  {folder + "/ copié":<19} -> www/{folder}/ ({len(os.listdir(dst))} fichiers)')
 
-    # Icônes
-    icons_src = os.path.join(PWA, 'icons')
-    icons_dst = os.path.join(WWW, 'icons')
-    if os.path.isdir(icons_dst):
-        shutil.rmtree(icons_dst)
-    shutil.copytree(icons_src, icons_dst)
-    print(f'  icônes copiées      -> www/icons/ ({len(os.listdir(icons_dst))} fichiers)')
+    stamp_service_worker()
 
     # Reliquats d'anciennes copies manuelles à la racine de www/
     for stale in ('icon-192.png', 'icon-512.png'):
@@ -90,6 +91,11 @@ def stamp_service_worker():
             continue                      # évite de dépendre de son propre hash
         with open(os.path.join(WWW, name), 'rb') as f:
             digest.update(f.read())
+    for folder in ASSET_DIRS:
+        base = os.path.join(PWA, folder)
+        for name in sorted(os.listdir(base)):
+            with open(os.path.join(base, name), 'rb') as f:
+                digest.update(f.read())
     token = digest.hexdigest()[:12]
 
     sw = os.path.join(WWW, 'sw.js')

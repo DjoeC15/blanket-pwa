@@ -312,6 +312,20 @@ class AudioEngine {
     this.master.gain.setTargetAtTime(volume, now, 0.03);
   }
 
+  /**
+   * Rampe linéaire du volume général sur `seconds`, sans toucher à
+   * `masterVolume` : le minuteur s'en sert pour le fondu final, puis
+   * `setMasterVolume(masterVolume)` rétablit le réglage de l'utilisateur.
+   */
+  fadeMaster(volume, seconds) {
+    if (!this.master) return;
+    const now = this.ctx.currentTime;
+    const g   = this.master.gain;
+    g.cancelScheduledValues(now);
+    g.setValueAtTime(g.value, now);
+    g.linearRampToValueAtTime(volume, now + seconds);
+  }
+
   _gainFor(entry) {
     if (!entry.gain) {
       entry.gain = this.ctx.createGain();

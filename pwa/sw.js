@@ -10,9 +10,13 @@ const APP_FILES = [
   './',
   './index.html',
   './style.css',
+  './i18n.js',
   './audio-engine.js',
   './app.js',
   './manifest.json',
+  './fonts/material-symbols-rounded.woff2',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
 ];
 
 // Cache static app shell on install (fast — no audio files yet)
