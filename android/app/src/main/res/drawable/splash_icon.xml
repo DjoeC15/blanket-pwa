@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône du splash Android 12+ : le système la rogne en cercle au 2/3 de sa
+     taille. L'encart garde tout le logo carré à l'intérieur de ce cercle. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@mipmap/ic_launcher_foreground"
+    android:inset="26%" />

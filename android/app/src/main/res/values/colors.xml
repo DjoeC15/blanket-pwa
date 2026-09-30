@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Surface du thème Navy par défaut (variable surface de pwa/style.css). Le
+         splash et le fond de fenêtre la reprennent pour que le passage à la
+         WebView ne se voie pas. -->
+    <color name="blanket_surface">#070F1F</color>
+</resources>
