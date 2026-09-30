@@ -44,7 +44,7 @@ const PRESETS_KEY  = 'blanket_presets';
 const SETTINGS_KEY = 'blanket_settings';
 const UI_KEY       = 'blanket_ui';          // lu aussi par le script en tête d'index.html
 
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '1.1.1';
 
 // Durée gardée en mémoire pour un son importé. Les bruits intégrés sont coupés
 // à 45 s sans que ça s'entende ; un fichier importé doit être joué en entier.
